@@ -6,8 +6,7 @@ Functionalities include profile information update, donation eligibility check, 
 
 >Developed using MySQL, Express, Angular 4, and Node.js
 
-### Source code and mysql scripts are included in the src and sql folders. This project was developed and hosted on Cloud 9 so you can easily run the project through the Cloud 9 workspace. Link to Cloud 9 workspace: https://ide.c9.io/izvonkov/blood-donation-database
-
+### Source code and mysql scripts are included in the src and sql folders. This project was developed and hosted on Cloud 9 so you can easily run the project through the Cloud 9 workspace here:  https://ide.c9.io/izvonkov/blood-donation-database
 ### Follow these instructions on Cloud 9 to run the project.
 Open three terminals to run mysql, the server, and the client:
 
