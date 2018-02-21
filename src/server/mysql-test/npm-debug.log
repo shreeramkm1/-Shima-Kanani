@@ -1,0 +1,87 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/home/ubuntu/.nvm/versions/node/v6.11.2/bin/node',
+1 verbose cli   '/home/ubuntu/.nvm/versions/node/v6.11.2/bin/npm',
+1 verbose cli   'install',
+1 verbose cli   'mysql',
+1 verbose cli   '–save' ]
+2 info using npm@3.10.10
+3 info using node@v6.11.2
+4 silly loadCurrentTree Starting
+5 silly install loadCurrentTree
+6 silly install readLocalPackageData
+7 silly fetchPackageMetaData mysql
+8 silly fetchPackageMetaData –save
+9 silly fetchNamedPackageData mysql
+10 silly mapToRegistry name mysql
+11 silly mapToRegistry using default registry
+12 silly mapToRegistry registry https://registry.npmjs.org/
+13 silly mapToRegistry data Result {
+13 silly mapToRegistry   raw: 'mysql',
+13 silly mapToRegistry   scope: null,
+13 silly mapToRegistry   escapedName: 'mysql',
+13 silly mapToRegistry   name: 'mysql',
+13 silly mapToRegistry   rawSpec: '',
+13 silly mapToRegistry   spec: 'latest',
+13 silly mapToRegistry   type: 'tag' }
+14 silly mapToRegistry uri https://registry.npmjs.org/mysql
+15 silly fetchOtherPackageData –save
+16 silly cache add args [ '–save', null ]
+17 verbose cache add spec –save
+18 silly cache add parsed spec Result {
+18 silly cache add   raw: '–save',
+18 silly cache add   scope: null,
+18 silly cache add   escapedName: null,
+18 silly cache add   name: null,
+18 silly cache add   rawSpec: '–save',
+18 silly cache add   spec: '/home/ubuntu/workspace/angular-project/server/mysql-test/–save',
+18 silly cache add   type: 'local' }
+19 error addLocal Could not install /home/ubuntu/workspace/angular-project/server/mysql-test/–save
+20 silly fetchPackageMetaData Error: ENOENT: no such file or directory, open '/home/ubuntu/workspace/angular-project/server/mysql-test/–save'
+20 silly fetchPackageMetaData     at Error (native)
+20 silly fetchPackageMetaData  error for –save { Error: ENOENT: no such file or directory, open '/home/ubuntu/workspace/angular-project/server/mysql-test/–save'
+20 silly fetchPackageMetaData     at Error (native)
+20 silly fetchPackageMetaData   errno: -2,
+20 silly fetchPackageMetaData   code: 'ENOENT',
+20 silly fetchPackageMetaData   syscall: 'open',
+20 silly fetchPackageMetaData   path: '/home/ubuntu/workspace/angular-project/server/mysql-test/–save' }
+21 verbose request uri https://registry.npmjs.org/mysql
+22 verbose request no auth needed
+23 info attempt registry request try #1 at 9:05:09 PM
+24 verbose request id cd82fd40faf02ef3
+25 verbose etag W/"5a200091-24819"
+26 verbose lastModified Thu, 30 Nov 2017 12:58:57 GMT
+27 http request GET https://registry.npmjs.org/mysql
+28 info retry will retry, error on last attempt: TypeError: The header content contains invalid characters
+29 info attempt registry request try #2 at 9:05:19 PM
+30 verbose etag W/"5a200091-24819"
+31 verbose lastModified Thu, 30 Nov 2017 12:58:57 GMT
+32 http request GET https://registry.npmjs.org/mysql
+33 info retry will retry, error on last attempt: TypeError: The header content contains invalid characters
+34 info attempt registry request try #3 at 9:06:19 PM
+35 verbose etag W/"5a200091-24819"
+36 verbose lastModified Thu, 30 Nov 2017 12:58:57 GMT
+37 http request GET https://registry.npmjs.org/mysql
+38 silly get cb [ 304, undefined ]
+39 verbose etag https://registry.npmjs.org/mysql from cache
+40 verbose get saving mysql to /home/ubuntu/.npm/registry.npmjs.org/mysql/.cache.json
+41 verbose correctMkdir /home/ubuntu/.npm correctMkdir not in flight; initializing
+42 silly rollbackFailedOptional Starting
+43 silly rollbackFailedOptional Finishing
+44 silly runTopLevelLifecycles Finishing
+45 silly install printInstalled
+46 verbose stack Error: ENOENT: no such file or directory, open '/home/ubuntu/workspace/angular-project/server/mysql-test/–save'
+46 verbose stack     at Error (native)
+47 verbose cwd /home/ubuntu/workspace/angular-project/server/mysql-test
+48 error Linux 4.9.17-c9
+49 error argv "/home/ubuntu/.nvm/versions/node/v6.11.2/bin/node" "/home/ubuntu/.nvm/versions/node/v6.11.2/bin/npm" "install" "mysql" "–save"
+50 error node v6.11.2
+51 error npm  v3.10.10
+52 error path /home/ubuntu/workspace/angular-project/server/mysql-test/–save
+53 error code ENOENT
+54 error errno -2
+55 error syscall open
+56 error enoent ENOENT: no such file or directory, open '/home/ubuntu/workspace/angular-project/server/mysql-test/–save'
+57 error enoent ENOENT: no such file or directory, open '/home/ubuntu/workspace/angular-project/server/mysql-test/–save'
+57 error enoent This is most likely not a problem with npm itself
+57 error enoent and is related to npm not being able to find a file.
+58 verbose exit [ -2, true ]

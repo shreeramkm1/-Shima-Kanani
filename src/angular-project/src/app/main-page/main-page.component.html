@@ -1,0 +1,274 @@
+
+
+<button class='interface btn btn-warning' routerLink ='/sign-in'>Back to Sign in</button>
+
+<button class='interface btn btn-info' data-toggle="modal" data-target="#update-modal">Update Profile</button>
+
+<button class='interface btn btn-dark' data-toggle="modal" data-target="#eligibility-modal" (click)="checkEligibility()">Check my eligibility</button>
+
+<button class='interface btn btn-primary' (click)= "getHistoryButton()" data-toggle="modal" data-target="#history-modal">Blood Donation History</button>
+
+<button class='interface btn btn-success' (click) = "getStatsButton()" data-toggle="modal" data-target="#blood-stats-modal">Blood Statistics</button>
+
+<div class="interface dropdown">
+  <button class="btn btn-danger dropdown-toggle" type="button" id="donation-events-info" data-toggle="dropdown" [disabled]="!eligibility">
+    Book Appointment
+  </button>
+  
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" >
+    <!-- "'#modal'+location.city" -->
+      <button *ngFor="let location of locations" data-toggle="modal" [attr.data-target]="'#modal'+location.locationID" class="dropdown-item" >{{location.city}}</button>
+  </div>
+</div>
+
+<br>
+
+
+<!-- Update Modal -->
+<div class="modal fade" id="update-modal" tabindex="-1" role="dialog"  >
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Update Profile</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        
+        <form name="profileForm" ngNativeValidate #f="ngForm" (ngSubmit)="updateInfo(f)">
+            <h3>Profile Info</h3>
+            <div class="row">
+              <div class="col-md-12">
+                <div class="form-group">
+                  <label>First Name</label>
+                  <input type="text" name="first-name"class="form-control" [value]="userInfo.name" ngModel required>
+                </div>
+              </div>
+              
+              <div class="col-md-12">
+                <div class="form-group">
+                  <label>Last name</label>
+                  <input type="text" name="last-name" class="form-control" ngModel required>
+                </div>
+              </div>
+              
+              <div class="col-md-12">
+                <div class="form-group">
+                  <label>Email</label>
+                  <input type="text" name="email" class="form-control" ngModel required>
+                </div>
+              </div>
+              
+              <div class="col-md-12">
+                <div class="form-group">
+                  <label>Health Card Number</label>
+                  <input type="number" name="health-card-no" class="form-control" ngModel required>
+                </div>
+              </div>
+              
+              <div class="col-md-12">
+                <div class="form-group">
+                  <label>HIV Positive</label>
+                  <input type="text" name="hiv-status" class="form-control" ngModel required >
+                </div>
+              </div>
+              
+              <div class="col-md-12">
+                <div class="form-group">
+                  <label>Insurance Number</label>
+                  <input type="number" name="insurance-no" class="form-control" ngModel required>
+                </div>
+              </div>
+              
+              <div class="col-md-12">
+                <div class="form-group">
+                  <input type="submit" class="btn btn-success"  value="Update Information">
+                </div>
+              </div>
+            </div>
+          
+        </form>  
+      </div>
+      
+    </div>
+  </div>
+  
+</div>
+
+ <!-- Eligibility Modal -->
+<div class="modal fade" id="eligibility-modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Eligibility</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        {{elgibility}}
+        <p *ngIf="eligibility == true">You are eligibile to donate.</p>
+        <p *ngIf="eligibility == false">You are NOT eligibile to donate.</p>
+        <button data-dismiss="modal" class='btn btn-danger'>Close</button>  
+      </div>
+      
+    </div>
+  </div>
+  
+</div>
+
+<!-- Appointment Modal -->
+<div class="modal fade" id="appointment-modal" tabindex="-1" role="dialog"  >
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Book Appointment</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        
+        <form name="appointmentForm" ngNativeValidate #p="ngForm" (ngSubmit)="bookAppointmentButton(p)">
+            <h3>Appointment Info</h3>
+            <div class="row">
+              
+              <div class="col-md-12">
+                <div class="form-group">
+                  <label>Donation Time</label>
+                  <input type="time" name="donation-time" class="form-control" ngModel required>
+                </div>
+                
+              </div>
+              
+              <div class="col-md-12">
+                <div class="form-group not-register">
+                  <input type="submit" class="btn btn-success"  value="Book Appointment">
+                </div>
+              </div>
+            </div>
+          
+        </form>  
+      </div>
+      
+    </div>
+  </div>
+  
+</div>
+
+<!-- History Modal -->
+<div class="modal fade" id="history-modal" tabindex="-1" role="dialog" >
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Donation History</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        
+        <div  *ngFor="let donation of donationHistory">
+          
+          <p>
+            Donated blood at <strong>{{donation.eventName}}</strong> <br> 
+            in <strong>{{donation.city}}</strong> <br> 
+            on <strong>{{donation.donationDate}}</strong>
+            at <strong>{{donation.donationTime}}</strong>
+          </p>
+          
+        </div>
+        
+        <button data-dismiss="modal" class='btn btn-danger'>Close</button>  
+      </div>
+      
+    </div>
+  </div>
+  
+</div>
+
+<!-- Blood Stats Modal Modal -->
+<div class="modal fade" id="blood-stats-modal" tabindex="-1" role="dialog" >
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Blood Statistics</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        
+        <div *ngIf="bloodStats.length > 0">
+          <p>You have donated {{bloodStats[0].countDonationTimes}} times.</p>
+          <p *ngIf="bloodStats[0].sumDonationAmount != null">You have donated {{bloodStats[0].sumDonationAmount}} ML!</p>
+        </div>
+        
+         <p *ngIf="bloodStats.length == 0">No stats.</p>
+        
+        <button data-dismiss="modal" class='btn btn-danger'>Close</button>  
+      </div>
+      
+    </div>
+  </div>
+  
+</div>
+
+<!--location modals -->
+<div *ngFor="let location of locations">
+  <div data-toggle="modal" class="modal fade" id="modal{{location.locationID}}" tabindex="-1" role="dialog" >
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            
+            <div class="modal-body">
+              <form ngNativeValidate name="dateSelect" #f="ngForm" (ngSubmit)="showDonationEvents(f, location.city)" >
+                <div class="login-container">
+                  <div class="row">
+                    
+                    <div class="col-12">
+                      <input name="location" class="form-control" type="text" value={{location.city}} disabled>
+                      <br>
+                    </div>
+                    
+                    <div class="col-8">
+                      <input name="date" class="form-control" type="date" ngModel required>
+                    </div>
+                    
+                    <div class="col-4">
+                      <button type="submit" class="btn btn-success" data-toggle="modal" data-target="#donation-events">See Events</button>
+                    </div>
+                    
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+    </div>  
+</div>
+
+<!--donation events -->
+<div data-toggle="modal" class="modal fade" id="donation-events" tabindex="-1" role="dialog" >
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            
+            <div class="modal-body" >
+              <h1>Events</h1>
+              
+              <p *ngIf="donationEvents.length == 0">No donation events on this day in this location.</p>
+              
+              <p *ngFor="let event of donationEvents">
+                <strong>Event name:</strong> {{event.eventName}} <br/>
+                <strong>Open from:</strong>  {{event.openTime}} <br/>
+                <strong>Open till:</strong>  {{event.closeTime}} <br/>
+                <button class="btn btn-danger" (click) = "bookAtEvent(event.eventName, event.eventDate)" data-toggle="modal" data-target="#appointment-modal">Book at {{event.eventName}}</button>
+              </p>
+              
+             
+              
+            </div>
+          </div>
+        </div>
+    </div>  
+
